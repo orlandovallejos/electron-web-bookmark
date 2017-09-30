@@ -1,0 +1,10 @@
+{
+  "name": "electron-web-bookmark",
+  "version": "0.0.0",
+  "dependencies": {
+    "bulma": "0.3.1",
+    "font-awesome": "latest"
+  },
+  "devDependencies": {
+  }
+}
