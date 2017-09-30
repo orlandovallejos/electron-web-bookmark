@@ -62,3 +62,13 @@ $('#item-input').keyup((e) => {
 items.pages.forEach(function (page) {
   items.addItem(page);
 });
+
+//Filter items:
+$('#search').keyup((e) => {
+  var filter = $(e.currentTarget).val();
+
+  $('.read-item')
+    .each((i, el) => {
+      $(el).text().toLowerCase().includes(filter) ? $(el).show() : $(el).hide();
+    });
+});
