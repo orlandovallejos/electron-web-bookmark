@@ -4,6 +4,11 @@ exports.saveItems = () => {
   localStorage.setItem('pages', JSON.stringify(this.pages));
 }
 
+exports.selectItem = (e) => {
+  $('.read-item').removeClass('is-active');
+  $(e.currentTarget).addClass('is-active');
+};
+
 exports.addItem = (item) => {
   //Hide "no items" message:
   $('#no-items').hide();
@@ -21,4 +26,10 @@ exports.addItem = (item) => {
   `;
 
   $('#read-list').append(template);
+
+  //Off click events:
+  $('.read-item').off('click');
+  $('.read-item').on('click', (e) => {
+    this.selectItem(e);
+  });
 }
