@@ -2,6 +2,7 @@
 // Modules
 const { app, ipcMain } = require('electron')
 const mainWindow = require('./mainWindow')
+const readItem = require('./readItem');
 
 
 // Enable Electron-Reload
@@ -12,7 +13,10 @@ require('electron-reload')(__dirname, {
 //Listen for an event from renderer process:
 ipcMain.on('new-item', (e, itemURL) => {
 
-  e.sender.send('new-item-success', 'new read item')
+  readItem(itemURL, (item) => {
+    console.log(item);
+    e.sender.send('new-item-success', 'new read item');
+  });
 })
 
 // This method will be called when Electron has finished

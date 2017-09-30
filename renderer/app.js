@@ -32,7 +32,7 @@ $('#add-button').click(() => {
   }
 })
 
-//Listten for a new event from main process:
+//Listen for a new event from main process:
 ipcRenderer.on('new-item-success', (e, item) => {
   console.log(item);
 
@@ -40,11 +40,11 @@ ipcRenderer.on('new-item-success', (e, item) => {
   $('#item-input').prop('disabled', true).val('')
   $('#add-button').removeClass('is-loading')
   $('.close-add-modal').removeClass('is-disabled')
-})
+});
 
 //Simulate add click on pressing enter key:
 $('#item-input').keyup((e) => {
   if (e.key === 'Enter') {
     $('#add-button').click();
   }
-})
+});
