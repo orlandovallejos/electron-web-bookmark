@@ -14,8 +14,8 @@ require('electron-reload')(__dirname, {
 ipcMain.on('new-item', (e, itemURL) => {
 
   readItem(itemURL, (item) => {
-    console.log(item);
-    e.sender.send('new-item-success', 'new read item');
+    //Send an event to the renderer process:
+    e.sender.send('new-item-success', item);
   });
 })
 

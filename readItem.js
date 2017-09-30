@@ -9,7 +9,7 @@ module.exports = (itemURL, callback) => {
   //Create the window offscreen:
   bgItemWin = new BrowserWindow({
     width: 1000,
-    height: 100,
+    height: 1000,
     show: false,
     webPreferences: {
       offscreen: true
