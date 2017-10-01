@@ -15,7 +15,7 @@ exports.addItem = (item) => {
 
   //Create the template:
   let template = `
-    <a class="panel-block read-item">
+    <a class="panel-block read-item" data-url="${item.url}">
       <figure class="image has-shadow is-64x64 thumb">
         <img src="${item.screenshot}">
       </figure>
@@ -29,7 +29,19 @@ exports.addItem = (item) => {
 
   //Off click events:
   $('.read-item').off('click');
+  $('.read-item').off('dblclick');
   $('.read-item').on('click', (e) => {
     this.selectItem(e);
   });
+  $('.read-item').on('dblclick', (e) => {
+    this.openItem();
+  });
+}
+
+exports.openItem = () => {
+
+  let targetItem = $('.read-item.is-active');
+  let contentURL = targetItem.data('url');
+  console.log('Opening item...');
+  console.log(contentURL);
 }
