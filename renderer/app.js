@@ -3,7 +3,7 @@
 // All of the Node.js APIs are available in this process.
 
 //Modules:
-const { ipcRenderer } = require('electron')
+const { ipcRenderer, shell } = require('electron')
 const items = require('./items')
 
 //Show modal:
@@ -11,6 +11,10 @@ $('.open-add-modal').click(() => {
   $('#add-modal').addClass('is-active');
   $('#item-input').val('http://');
   $('#item-input').focus();
+
+  // shell.beep();
+  // shell.openExternal('calc.exe');
+  // shell.openExternal('C:\Windows\System32\calc.exe');
 })
 
 //Hide modal:
@@ -71,4 +75,27 @@ $('#search').keyup((e) => {
     .each((i, el) => {
       $(el).text().toLowerCase().includes(filter) ? $(el).show() : $(el).hide();
     });
+});
+
+//Add event to select items by arrow keys:
+$(document).keyup((e) => {
+  switch (e.key) {
+    case 'ArrowUp':
+      var prevElem = $('.read-item.is-active').prev();
+      if (prevElem.hasClass('read-item')) {
+        $('.read-item.is-active').removeClass('is-active');
+        prevElem.addClass('is-active');
+      }
+      break;
+    case 'ArrowDown':
+      var nextElem = $('.read-item.is-active').next();
+      if (nextElem.hasClass('read-item')) {
+        $('.read-item.is-active').removeClass('is-active');
+        nextElem.addClass('is-active');
+      }
+      break;
+
+    default:
+      break;
+  }
 });
