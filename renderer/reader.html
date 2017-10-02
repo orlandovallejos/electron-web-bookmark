@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="../bower_components/bulma/css/bulma.css">
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <style>
+    html {
+      overflow: hidden;
+    }
+    
+    html, body, webview {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <webview src="about:blank"></webview>
+
+  <script>
+    //Add jquery to the DOM
+    $ = require('jquery');
+
+    //reader script
+    require('./reader')
+  </script>
+</body>
+
+</html>

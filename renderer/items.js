@@ -15,7 +15,7 @@ exports.addItem = (item) => {
 
   //Create the template:
   let template = `
-    <a class="panel-block read-item" data-url="${item.url}">
+    <a class="panel-block read-item" data-url="${item.url}" data-title="${item.title}">
       <figure class="image has-shadow is-64x64 thumb">
         <img src="${item.screenshot}">
       </figure>
@@ -42,6 +42,13 @@ exports.openItem = () => {
 
   let targetItem = $('.read-item.is-active');
   let contentURL = targetItem.data('url');
-  console.log('Opening item...');
-  console.log(contentURL);
+  let contentTitle = targetItem.data('title');
+  // console.log('Opening item...');
+  // console.log(contentURL);
+
+  let codedURL = encodeURIComponent(contentURL);
+  let readerWinURL = `file://${__dirname}/reader.html?url=${codedURL}`;
+  console.log(readerWinURL);
+  //Open the url in a new window:
+   let readerWin = window.open(readerWinURL, contentTitle);
 }

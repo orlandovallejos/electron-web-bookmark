@@ -20,7 +20,7 @@ exports.createWindow = () => {
   this.win.webContents.openDevTools()
 
   // Load main window content
-  this.win.loadURL(`file://${__dirname}/renderer/main.html`)
+  this.win.loadURL(`file://${__dirname}/renderer/app.html`)
 
   // Handle window closed
   this.win.on('closed', () => {
