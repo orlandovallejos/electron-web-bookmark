@@ -11,8 +11,10 @@
     html {
       overflow: hidden;
     }
-    
-    html, body, webview {
+
+    html,
+    body,
+    webview {
       height: 100%;
       width: 100%;
     }
@@ -20,6 +22,24 @@
 </head>
 
 <body>
+  <section id="loader" class="hero is-fullheight has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <div class="busy">
+          <h1 class="title">
+            <span class="icon is-large">
+              <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+            </span>
+          </h1>
+        </div>
+        <div class="failed is-hidden">
+          <h1 class="title">Failed to Load</h1>
+          <h2 class="subtitle">Please check your Network Connection</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <webview src="about:blank"></webview>
 
   <script>
