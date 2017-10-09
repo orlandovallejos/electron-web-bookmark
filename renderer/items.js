@@ -47,8 +47,37 @@ exports.openItem = () => {
   // console.log(contentURL);
 
   let codedURL = encodeURIComponent(contentURL);
-  let readerWinURL = `file://${__dirname}/reader.html?url=${codedURL}`;
-  console.log(readerWinURL);
+
+  //Get item index to pass to the proxy window:
+  let itemIndex = targetItem.index() - 1;
+
+  let readerWinURL = `file://${__dirname}/reader.html?url=${codedURL}&itemIndex=${itemIndex}`;
+  // console.log(readerWinURL);
   //Open the url in a new window:
-   let readerWin = window.open(readerWinURL, contentTitle);
+  let readerWin = window.open(readerWinURL, contentTitle);
 }
+
+//window event handler to delete an item:
+window.deleteItem = (i) => {
+
+  //Remove item from DOM:
+  $('.read-item').eq(i).remove();
+
+  //Remove item from array:
+  this.pages = this.pages.filter((item, index) => {
+    return index !== i;
+  });
+
+  //Remove from localStorage:
+  this.saveItems();
+
+  //Mark as selected another item:
+  if (this.pages.length > 0) {
+    let newIndex = (i === 0) ? 0 : i - 1;
+
+    $('.read-item').eq(newIndex).addClass('.is-active');
+  }
+  else {
+    $('#no-items').show();
+  }
+};
