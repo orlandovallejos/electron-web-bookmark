@@ -34,11 +34,12 @@ exports.addItem = (item) => {
     this.selectItem(e);
   });
   $('.read-item').on('dblclick', (e) => {
-    this.openItem();
+    window.openItem();
   });
 }
 
-exports.openItem = () => {
+//Give global access to this function:
+window.openItem = () => {
 
   let targetItem = $('.read-item.is-active');
   let contentURL = targetItem.data('url');
@@ -57,8 +58,14 @@ exports.openItem = () => {
   let readerWin = window.open(readerWinURL, contentTitle);
 }
 
+//Give global access to this function:
 //window event handler to delete an item:
-window.deleteItem = (i) => {
+window.deleteItem = (i = false) => {
+
+  //If index is not set:
+  if (!i) {
+    i = ($('.read-item.is-active').index() - 1);
+  }
 
   //Remove item from DOM:
   $('.read-item').eq(i).remove();
@@ -81,3 +88,18 @@ window.deleteItem = (i) => {
     $('#no-items').show();
   }
 };
+
+// Open item in default browser
+window.openInBrowser = () => {
+
+  // Only if items exists
+  if (!this.pages.length) { 
+    return; 
+  }
+
+  // Get selected item
+  let targetItem = $('.read-item.is-active')
+
+  // Open in Browser
+  require('electron').shell.openExternal(targetItem.data('url'))
+}

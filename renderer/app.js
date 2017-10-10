@@ -3,8 +3,11 @@
 // All of the Node.js APIs are available in this process.
 
 //Modules:
-const { ipcRenderer, shell } = require('electron')
-const items = require('./items')
+const { ipcRenderer, shell } = require('electron');
+const items = require('./items');
+
+//Menu:
+const menu = require('./menu');
 
 //Show modal:
 $('.open-add-modal').click(() => {
