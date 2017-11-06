@@ -10,17 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/orlandovallejos/electron-web-bookmark.git"
   },
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/orlandovallejos/electron-web-bookmark/issues"
-  },
+  "author": "Orlando Vallejos",
   "homepage": "https://github.com/orlandovallejos/electron-web-bookmark#readme",
   "devDependencies": {
     "electron": "*",

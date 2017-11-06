@@ -6,9 +6,9 @@ const readItem = require('./readItem');
 
 
 // Enable Electron-Reload
-require('electron-reload')(__dirname, {
-  electron: require('${__dirname}/../../node_modules/electron')
-})
+// require('electron-reload')(__dirname, {
+//   electron: require('${__dirname}/../../node_modules/electron')
+// })
 
 //Listen for an event from renderer process:
 ipcMain.on('new-item', (e, itemURL) => {

@@ -56,4 +56,4 @@ typings/
 
 # dotenv environment variables file
 .env
-
+/web-bookmark-win32-x64
